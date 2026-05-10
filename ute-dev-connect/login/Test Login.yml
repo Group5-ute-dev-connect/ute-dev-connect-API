@@ -1,0 +1,161 @@
+info:
+  name: Test Login
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:5000/api/auth/login
+  body:
+    type: json
+    data: |-
+      {
+          "email": "lengonhuttan2005@gmail.com",
+          "password": "123456"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Test Login - 200
+    request:
+      url: http://localhost:5000/api/auth/login
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "email": "lengonhuttan2005@gmail.com",
+              "password": "123456"
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: X-Powered-By
+          value: Express
+        - name: RateLimit-Policy
+          value: 6;w=900
+        - name: RateLimit-Limit
+          value: "6"
+        - name: RateLimit-Remaining
+          value: "4"
+        - name: RateLimit-Reset
+          value: "518"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Content-Length
+          value: "307"
+        - name: ETag
+          value: W/"133-DITp4XJ33tfciBZyZDecjxsZoWk"
+        - name: Date
+          value: Sun, 10 May 2026 15:48:59 GMT
+        - name: Connection
+          value: keep-alive
+        - name: Keep-Alive
+          value: timeout=5
+      body:
+        type: json
+        data: |-
+          {
+              "success": true,
+              "message": "Đăng nhập thành công",
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWEzYTFiMmMzZDRlNWY2MDcxODI5MCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3ODQyODEzOSwiZXhwIjoxNzc4NDMxNzM5fQ._n9j0eFWieMAMCOAXNH7Nl4QowrYeG33zisGewqM-d8",
+              "role": "admin",
+              "redirectUrl": "/api/admin/profile"
+          }
+  - name: Test Login - 401
+    request:
+      url: http://localhost:5000/api/auth/login
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "email": "lengonhuttan2005@gmail.com",
+              "password": "1234567"
+          }
+    response:
+      status: 401
+      statusText: Unauthorized
+      headers:
+        - name: X-Powered-By
+          value: Express
+        - name: RateLimit-Policy
+          value: 6;w=900
+        - name: RateLimit-Limit
+          value: "6"
+        - name: RateLimit-Remaining
+          value: "1"
+        - name: RateLimit-Reset
+          value: "807"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Content-Length
+          value: "60"
+        - name: ETag
+          value: W/"3c-w1tm2bIPN4NYQ1BDs5RyVMUMlzY"
+        - name: Date
+          value: Sun, 10 May 2026 16:13:42 GMT
+        - name: Connection
+          value: keep-alive
+        - name: Keep-Alive
+          value: timeout=5
+      body:
+        type: json
+        data: |-
+          {
+              "success": false,
+              "message": "Sai email hoặc mật khẩu!"
+          }
+  - name: Test Login - 429
+    request:
+      url: http://localhost:5000/api/auth/login
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+              "email": "lengonhuttan2005@gmail.com",
+              "password": "123456"
+          }
+    response:
+      status: 429
+      statusText: Too Many Requests
+      headers:
+        - name: X-Powered-By
+          value: Express
+        - name: RateLimit-Policy
+          value: 6;w=900
+        - name: RateLimit-Limit
+          value: "6"
+        - name: RateLimit-Remaining
+          value: "0"
+        - name: RateLimit-Reset
+          value: "768"
+        - name: Retry-After
+          value: "768"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Content-Length
+          value: "120"
+        - name: ETag
+          value: W/"78-c9HZMrqhu4xrF1rRGnuMp7UjxwQ"
+        - name: Date
+          value: Sun, 10 May 2026 16:14:21 GMT
+        - name: Connection
+          value: keep-alive
+        - name: Keep-Alive
+          value: timeout=5
+      body:
+        type: json
+        data: |-
+          {
+              "success": false,
+              "message": "Bạn đã thử đăng nhập sai quá nhiều lần. Vui lòng thử lại sau 15 phút."
+          }

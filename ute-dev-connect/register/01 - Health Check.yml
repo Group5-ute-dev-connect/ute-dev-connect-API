@@ -1,0 +1,68 @@
+info:
+  name: 01 - Health Check
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: http://localhost:5000/
+  body:
+    type: json
+    data: "{\r
+
+      \  \"name\": \"Huynh Ngoc Tai\",\r
+
+      \  \"email\": \"huynhngoctai205@gmail.com\",\r
+
+      \  \"studentId\": \"23110305Onew\",\r
+
+      \  \"password\": \"12345678a\"\r
+
+      }"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 01 - Health Check - 200
+    request:
+      url: http://localhost:5000/
+      method: GET
+      body:
+        type: json
+        data: "{\r
+
+          \  \"name\": \"Huynh Ngoc Tai\",\r
+
+          \  \"email\": \"huynhngoctai205@gmail.com\",\r
+
+          \  \"studentId\": \"23110305Onew\",\r
+
+          \  \"password\": \"12345678a\"\r
+
+          }"
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: X-Powered-By
+          value: Express
+        - name: Content-Type
+          value: text/html; charset=utf-8
+        - name: Content-Length
+          value: "56"
+        - name: ETag
+          value: W/"38-ZE4qikUaGpUknFgZpvCJbo43MtU"
+        - name: Date
+          value: Sun, 10 May 2026 15:46:43 GMT
+        - name: Connection
+          value: keep-alive
+        - name: Keep-Alive
+          value: timeout=5
+      body:
+        type: html
+        data: API Mạng xã hội đang chạy trên Database Online!

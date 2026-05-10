@@ -1,0 +1,78 @@
+info:
+  name: Test Auth
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: http://localhost:5000/api/admin/profile
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWEzYTFiMmMzZDRlNWY2MDcxODI5MCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3ODQwNzU4NywiZXhwIjoxNzc4NDExMTg3fQ.7EcvgMOiV-gRb7ACMMSNYnm9vR-UGdfZqBOsQqqqmwo
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Test Auth - 403
+    request:
+      url: http://localhost:5000/api/admin/profile
+      method: GET
+    response:
+      status: 403
+      statusText: Forbidden
+      headers:
+        - name: X-Powered-By
+          value: Express
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Content-Length
+          value: "77"
+        - name: ETag
+          value: W/"4d-HpYazDnVy6sBGT2dablRdHiuq1A"
+        - name: Date
+          value: Sun, 10 May 2026 15:49:08 GMT
+        - name: Connection
+          value: keep-alive
+        - name: Keep-Alive
+          value: timeout=5
+      body:
+        type: json
+        data: |-
+          {
+              "success": false,
+              "message": "Token không hợp lệ hoặc đã hết hạn"
+          }
+  - name: Test Auth - 200
+    request:
+      url: http://localhost:5000/api/admin/profile
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: X-Powered-By
+          value: Express
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Content-Length
+          value: "118"
+        - name: ETag
+          value: W/"76-eQKlxYMZDn9v3Q1mBBc4rw6kVcE"
+        - name: Date
+          value: Sun, 10 May 2026 15:49:31 GMT
+        - name: Connection
+          value: keep-alive
+        - name: Keep-Alive
+          value: timeout=5
+      body:
+        type: json
+        data: |-
+          {
+              "success": true,
+              "message": "Chào mừng Admin, đây là khu vực quản trị",
+              "adminId": "651a3a1b2c3d4e5f60718290"
+          }

@@ -1,0 +1,196 @@
+info:
+  name: Edit profile User
+  type: http
+  seq: 2
+
+http:
+  method: PUT
+  url: http://localhost:5000/api/profile
+  body:
+    type: json
+    data: "{\r
+
+      \    \"faculty\": \"Khoa Công Nghệ Thông Tin\",\r
+
+      \    \"classCode\": \"20110EUDZ\",\r
+
+      \    \"status\": \"Sinh viên\",\r
+
+      \    \"company\": \"EDUZ company\",\r
+
+      \    \"location\": \"TP.HCM\",\r
+
+      \    \"skills\": \"NodeJS, React, MongoDB, SQL, JAV\",\r
+
+      \    \"bio\": \"Xin chào, mình đang học môn Phát triển Ứng dụng\",\r
+
+      \    \"githubusername\": \"dev-ute\",\r
+
+      \    \"facebook\": \"https://facebook.com/eduz36\"\r
+
+      }\r\n"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Edit profile User - 200
+    request:
+      url: http://localhost:5000/api/profile
+      method: PUT
+      body:
+        type: json
+        data: "{\r
+
+          \    \"faculty\": \"Khoa Công Nghệ Thông Tin\",\r
+
+          \    \"classCode\": \"20110EUDZ\",\r
+
+          \    \"status\": \"Sinh viên\",\r
+
+          \    \"company\": \"EDUZ company\",\r
+
+          \    \"location\": \"TP.HCM\",\r
+
+          \    \"skills\": \"NodeJS, React, MongoDB, SQL, JAV\",\r
+
+          \    \"bio\": \"Xin chào, mình đang học môn Phát triển Ứng dụng\",\r
+
+          \    \"githubusername\": \"dev-ute\",\r
+
+          \    \"facebook\": \"https://facebook.com/eduz36\"\r
+
+          }\r\n"
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: X-Powered-By
+          value: Express
+        - name: RateLimit-Policy
+          value: 20;w=900
+        - name: RateLimit-Limit
+          value: "20"
+        - name: RateLimit-Remaining
+          value: "19"
+        - name: RateLimit-Reset
+          value: "900"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Content-Length
+          value: "1041"
+        - name: ETag
+          value: W/"411-X9RHioqPt2GMZZm8RvpelmqAsuo"
+        - name: Date
+          value: Sun, 10 May 2026 15:52:21 GMT
+        - name: Connection
+          value: keep-alive
+        - name: Keep-Alive
+          value: timeout=5
+      body:
+        type: json
+        data: |-
+          {
+              "social": {
+                  "facebook": "https://facebook.com/eduz36"
+              },
+              "_id": "651a1c3d4e5f60718293a4b5",
+              "user": "651a1b2c3d4e5f60718293a4",
+              "company": "EDUZ company",
+              "website": "https://eduz.vn",
+              "location": "TP.HCM",
+              "status": "Sinh viên",
+              "skills": [
+                  "NodeJS",
+                  "React",
+                  "MongoDB",
+                  "SQL",
+                  "JAV"
+              ],
+              "bio": "Xin chào, mình đang học môn Phát triển Ứng dụng",
+              "githubusername": "dev-ute",
+              "experience": [
+                  {
+                      "_id": "651a1d4e5f60718293a4b5c6",
+                      "title": "Software Engineering Intern",
+                      "company": "EduZ",
+                      "location": "Ho Chi Minh",
+                      "from": "2026-02-01T00:00:00.000Z",
+                      "current": true,
+                      "description": "Tham gia dự án Hub Xanh, phát triển hệ thống marketing với AI."
+                  }
+              ],
+              "education": [
+                  {
+                      "_id": "651a1e5f60718293a4b5c6d7",
+                      "school": "Ho Chi Minh City University of Technology and Education",
+                      "degree": "Bachelor",
+                      "fieldofstudy": "Information Technology",
+                      "from": "2022-09-01T00:00:00.000Z",
+                      "current": true,
+                      "description": "Học tập và nghiên cứu các công nghệ phần mềm."
+                  }
+              ],
+              "date": "2024-01-01T00:00:00.000Z",
+              "__v": 0,
+              "classCode": "20110EUDZ",
+              "faculty": "Khoa Công Nghệ Thông Tin"
+          }
+  - name: Edit profile User - 403
+    request:
+      url: http://localhost:5000/api/profile
+      method: PUT
+      body:
+        type: json
+        data: "{\r
+
+          \    \"faculty\": \"Khoa Công Nghệ Thông Tin\",\r
+
+          \    \"classCode\": \"20110EUDZ\",\r
+
+          \    \"status\": \"Sinh viên\",\r
+
+          \    \"company\": \"EDUZ company\",\r
+
+          \    \"location\": \"TP.HCM\",\r
+
+          \    \"skills\": \"NodeJS, React, MongoDB, SQL, JAV\",\r
+
+          \    \"bio\": \"Xin chào, mình đang học môn Phát triển Ứng dụng\",\r
+
+          \    \"githubusername\": \"dev-ute\",\r
+
+          \    \"facebook\": \"https://facebook.com/eduz36\"\r
+
+          }\r\n"
+    response:
+      status: 403
+      statusText: Forbidden
+      headers:
+        - name: X-Powered-By
+          value: Express
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Content-Length
+          value: "77"
+        - name: ETag
+          value: W/"4d-HpYazDnVy6sBGT2dablRdHiuq1A"
+        - name: Date
+          value: Sun, 10 May 2026 16:20:29 GMT
+        - name: Connection
+          value: keep-alive
+        - name: Keep-Alive
+          value: timeout=5
+      body:
+        type: json
+        data: |-
+          {
+              "success": false,
+              "message": "Token không hợp lệ hoặc đã hết hạn"
+          }

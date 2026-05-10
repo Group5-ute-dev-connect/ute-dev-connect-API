@@ -1,0 +1,82 @@
+info:
+  name: Login User
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:5000/api/auth/login
+  body:
+    type: json
+    data: "{\r
+
+      \    \"email\": \"23110219@student.hcmute.edu.vn\",\r
+
+      \    \"password\": \"123456\"\r
+
+      }\r\n"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var jsonData = res.getBody();
+        pm.collectionVariables.set("token", jsonData.token);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Login User - 200
+    request:
+      url: http://localhost:5000/api/auth/login
+      method: POST
+      body:
+        type: json
+        data: "{\r
+
+          \    \"email\": \"23110219@student.hcmute.edu.vn\",\r
+
+          \    \"password\": \"123456\"\r
+
+          }\r\n"
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: X-Powered-By
+          value: Express
+        - name: RateLimit-Policy
+          value: 6;w=900
+        - name: RateLimit-Limit
+          value: "6"
+        - name: RateLimit-Remaining
+          value: "3"
+        - name: RateLimit-Reset
+          value: "336"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Content-Length
+          value: "303"
+        - name: ETag
+          value: W/"12f-KoUdhUudczdGGw48hzRYWaguo08"
+        - name: Date
+          value: Sun, 10 May 2026 15:52:01 GMT
+        - name: Connection
+          value: keep-alive
+        - name: Keep-Alive
+          value: timeout=5
+      body:
+        type: json
+        data: |-
+          {
+              "success": true,
+              "message": "Đăng nhập thành công",
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWExYjJjM2Q0ZTVmNjA3MTgyOTNhNCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzc4NDI4MzIxLCJleHAiOjE3Nzg0MzE5MjF9.FLbUcZR0y7LI7XDwXFPwekcF0ddX-4A9_u-knvLCrwI",
+              "role": "user",
+              "redirectUrl": "/api/user/profile"
+          }

@@ -1,0 +1,9 @@
+info:
+  name: ute-dev-connect
+  type: folder
+  seq: 1
+
+request:
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWEzYTFiMmMzZDRlNWY2MDcxODI5MCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3ODQzMDEzNCwiZXhwIjoxNzc4NDMzNzM0fQ.5Ra4nwHeqJUv_ekMuKgPkfP_ve-FuKdog61XFW5JQgQ

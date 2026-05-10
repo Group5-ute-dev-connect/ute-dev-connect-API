@@ -1,0 +1,132 @@
+info:
+  name: 03 - Register Duplicate Email
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: http://localhost:5000/api/auth/register
+  body:
+    type: json
+    data: "{\r
+
+      \  \"name\": \"Huynh Ngoc Tai\",\r
+
+      \  \"email\": \"huynhngoctai205@gmail.com\",\r
+
+      \  \"studentId\": \"23110305SUCCESS02\",\r
+
+      \  \"password\": \"12345678a\"\r
+
+      }"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 03 - Register Duplicate Email - 400
+    request:
+      url: http://localhost:5000/api/auth/register
+      method: POST
+      body:
+        type: json
+        data: "{\r
+
+          \  \"name\": \"Huynh Ngoc Tai\",\r
+
+          \  \"email\": \"huynhngoctai205@gmail.com\",\r
+
+          \  \"studentId\": \"23110305SUCCESS02\",\r
+
+          \  \"password\": \"12345678a\"\r
+
+          }"
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: X-Powered-By
+          value: Express
+        - name: RateLimit-Policy
+          value: 5;w=900
+        - name: RateLimit-Limit
+          value: "5"
+        - name: RateLimit-Remaining
+          value: "4"
+        - name: RateLimit-Reset
+          value: "900"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Content-Length
+          value: "72"
+        - name: ETag
+          value: W/"48-6nyZs+IyCN0ZPDQlnbkRWtrESW4"
+        - name: Date
+          value: Sun, 10 May 2026 15:47:42 GMT
+        - name: Connection
+          value: keep-alive
+        - name: Keep-Alive
+          value: timeout=5
+      body:
+        type: json
+        data: |-
+          {
+              "success": false,
+              "message": "Email đã tồn tại trong hệ thống!"
+          }
+  - name: 03 - Register Duplicate Email - 429
+    request:
+      url: http://localhost:5000/api/auth/register
+      method: POST
+      body:
+        type: json
+        data: "{\r
+
+          \  \"name\": \"Huynh Ngoc Tai\",\r
+
+          \  \"email\": \"huynhngoctai205@gmail.com\",\r
+
+          \  \"studentId\": \"23110305SUCCESS02\",\r
+
+          \  \"password\": \"12345678a\"\r
+
+          }"
+    response:
+      status: 429
+      statusText: Too Many Requests
+      headers:
+        - name: X-Powered-By
+          value: Express
+        - name: RateLimit-Policy
+          value: 5;w=900
+        - name: RateLimit-Limit
+          value: "5"
+        - name: RateLimit-Remaining
+          value: "0"
+        - name: RateLimit-Reset
+          value: "852"
+        - name: Retry-After
+          value: "852"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Content-Length
+          value: "92"
+        - name: ETag
+          value: W/"5c-J3b0Z9k3nEtCocsre2xXA0Bcyew"
+        - name: Date
+          value: Sun, 10 May 2026 16:08:19 GMT
+        - name: Connection
+          value: keep-alive
+        - name: Keep-Alive
+          value: timeout=5
+      body:
+        type: json
+        data: |-
+          {
+              "success": false,
+              "message": "Too many register attempts. Please try again after 15 minutes."
+          }

@@ -1,0 +1,82 @@
+info:
+  name: Login Admin
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: http://localhost:5000/api/auth/login
+  body:
+    type: json
+    data: "{\r
+
+      \    \"email\": \"lengonhuttan2005@gmail.com\",\r
+
+      \    \"password\": \"123456\"\r
+
+      }\r\n"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var jsonData = res.getBody();
+        pm.collectionVariables.set("token", jsonData.token);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Login Admin - 200
+    request:
+      url: http://localhost:5000/api/auth/login
+      method: POST
+      body:
+        type: json
+        data: "{\r
+
+          \    \"email\": \"lengonhuttan2005@gmail.com\",\r
+
+          \    \"password\": \"123456\"\r
+
+          }\r\n"
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: X-Powered-By
+          value: Express
+        - name: RateLimit-Policy
+          value: 6;w=900
+        - name: RateLimit-Limit
+          value: "6"
+        - name: RateLimit-Remaining
+          value: "2"
+        - name: RateLimit-Reset
+          value: "293"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Content-Length
+          value: "307"
+        - name: ETag
+          value: W/"133-5N45zgfdC7kzktXnuk7mbC94Kj0"
+        - name: Date
+          value: Sun, 10 May 2026 15:52:44 GMT
+        - name: Connection
+          value: keep-alive
+        - name: Keep-Alive
+          value: timeout=5
+      body:
+        type: json
+        data: |-
+          {
+              "success": true,
+              "message": "Đăng nhập thành công",
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWEzYTFiMmMzZDRlNWY2MDcxODI5MCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3ODQyODM2NCwiZXhwIjoxNzc4NDMxOTY0fQ.YRskw6Xyr-OS9aJybwDxUEpkZoDkQe57EiLr1D7wtFA",
+              "role": "admin",
+              "redirectUrl": "/api/admin/profile"
+          }
