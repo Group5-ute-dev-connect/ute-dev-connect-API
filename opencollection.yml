@@ -1,18 +1,7 @@
 opencollection: 1.0.0
 
 info:
-  name: UTE-API
-config:
-  proxy:
-    inherit: true
-    config:
-      protocol: http
-      hostname: ""
-      port: ""
-      auth:
-        username: ""
-        password: ""
-      bypassProxy: ""
+  name: UTE - 3
 
 request:
   variables:

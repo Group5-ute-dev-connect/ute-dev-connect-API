@@ -142,6 +142,62 @@ examples:
               "classCode": "20110EUDZ",
               "faculty": "Khoa Công Nghệ Thông Tin"
           }
+  - name: Edit profile User - 400
+    request:
+      url: http://localhost:5000/api/profile
+      method: PUT
+      body:
+        type: json
+        data: "{\r
+
+          \    \"faculty\": \"Khoa Công Nghệ Thông Tin\"\r
+
+          }\r\n"
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: X-Powered-By
+          value: Express
+        - name: RateLimit-Policy
+          value: 20;w=900
+        - name: RateLimit-Limit
+          value: "20"
+        - name: RateLimit-Remaining
+          value: "19"
+        - name: RateLimit-Reset
+          value: "900"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Content-Length
+          value: "233"
+        - name: ETag
+          value: W/"e9-yATyEpnIoSR/xFBQGKMmaDmSha8"
+        - name: Date
+          value: Mon, 11 May 2026 02:20:49 GMT
+        - name: Connection
+          value: keep-alive
+        - name: Keep-Alive
+          value: timeout=5
+      body:
+        type: json
+        data: |-
+          {
+              "errors": [
+                  {
+                      "type": "field",
+                      "msg": "Trạng thái (status) không được để trống",
+                      "path": "status",
+                      "location": "body"
+                  },
+                  {
+                      "type": "field",
+                      "msg": "Kỹ năng (skills) không được để trống",
+                      "path": "skills",
+                      "location": "body"
+                  }
+              ]
+          }
   - name: Edit profile User - 403
     request:
       url: http://localhost:5000/api/profile
@@ -193,4 +249,66 @@ examples:
           {
               "success": false,
               "message": "Token không hợp lệ hoặc đã hết hạn"
+          }
+  - name: Edit profile User - 429
+    request:
+      url: http://localhost:5000/api/profile
+      method: PUT
+      body:
+        type: json
+        data: "{\r
+
+          \    \"faculty\": \"Khoa Công Nghệ Thông Tin\",\r
+
+          \    \"classCode\": \"20110EUDZ\",\r
+
+          \    \"status\": \"Sinh viên\",\r
+
+          \    \"company\": \"EDUZ company\",\r
+
+          \    \"location\": \"TP.HCM\",\r
+
+          \    \"skills\": \"NodeJS, React, MongoDB, SQL, JAV\",\r
+
+          \    \"bio\": \"Xin chào, mình đang học môn Phát triển Ứng dụng\",\r
+
+          \    \"githubusername\": \"dev-ute\",\r
+
+          \    \"facebook\": \"https://facebook.com/eduz36\"\r
+
+          }\r\n"
+    response:
+      status: 429
+      statusText: Too Many Requests
+      headers:
+        - name: X-Powered-By
+          value: Express
+        - name: RateLimit-Policy
+          value: 20;w=900
+        - name: RateLimit-Limit
+          value: "20"
+        - name: RateLimit-Remaining
+          value: "0"
+        - name: RateLimit-Reset
+          value: "781"
+        - name: Retry-After
+          value: "781"
+        - name: Content-Type
+          value: application/json; charset=utf-8
+        - name: Content-Length
+          value: "97"
+        - name: ETag
+          value: W/"61-FDFDdmw+1NSMrJvOQmGfT6Bh19A"
+        - name: Date
+          value: Mon, 11 May 2026 02:16:41 GMT
+        - name: Connection
+          value: keep-alive
+        - name: Keep-Alive
+          value: timeout=5
+      body:
+        type: json
+        data: |-
+          {
+              "success": false,
+              "message": "Bạn cập nhật Profile quá nhanh. Vui lòng đợi một lát."
           }
