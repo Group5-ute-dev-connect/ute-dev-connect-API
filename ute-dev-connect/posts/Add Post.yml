@@ -1,0 +1,17 @@
+info:
+  name: Add Post
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:5000/api/posts
+  body:
+    type: json
+    data: |-
+      {
+        "text": "Nội dung bài đăng thử nghiệm qua Bruno"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
