@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: http://localhost:5000/api/posts/651a1f60718293a4b5c6d7e8
+  url: http://localhost:5000/api/posts/6a0a42454efb51b81d49a41e
 
 settings:
   encodeUrl: true
