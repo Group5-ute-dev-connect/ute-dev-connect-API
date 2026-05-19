@@ -5,11 +5,19 @@ info:
 
 http:
   method: GET
-  url: http://localhost:5000/api/posts
+  url: http://localhost:5000/api/posts?page=1&limit=5
   body:
     type: none
   auth:
     type: none
+
+query:
+  - name: page
+    value: "1"
+    disabled: false
+  - name: limit
+    value: "5"
+    disabled: false
 
 settings:
   encodeUrl: true
