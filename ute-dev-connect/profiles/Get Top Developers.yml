@@ -1,0 +1,242 @@
+info:
+  name: Get Top Developers
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: http://localhost:5000/api/profile/top-developers
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Get Top Developers - 200
+    request:
+      url: http://localhost:5000/api/profile/top-developers
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: x-powered-by
+          value: Express
+        - name: content-type
+          value: application/json; charset=utf-8
+        - name: content-length
+          value: "4542"
+        - name: etag
+          value: W/"11be-QmRmatNY5JNCC/g8GHgSdCRUoqY"
+        - name: date
+          value: Tue, 19 May 2026 07:03:11 GMT
+        - name: connection
+          value: keep-alive
+        - name: keep-alive
+          value: timeout=5
+      body:
+        type: json
+        data: |-
+          [
+            {
+              "_id": "651a1c3d4e5f60718293a4b5",
+              "user": {
+                "_id": "651a1b2c3d4e5f60718293a4",
+                "name": "Trí Hiệu Võ",
+                "avatar": "//www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200&r=pg&d=mm"
+              },
+              "company": "EDUZ company 36",
+              "website": "https://eduz.vn",
+              "location": "TP.HCM",
+              "status": "Sinh viên",
+              "skills": [
+                "NodeJS",
+                "React",
+                "MongoDB",
+                "SQL",
+                "JAV",
+                "36"
+              ],
+              "bio": "Xin chào, mình đang học môn Phát triển Ứng dụng NÃO 2",
+              "githubusername": "dev-ute-EDUZ",
+              "experience": [
+                {
+                  "_id": "651a1d4e5f60718293a4b5c6",
+                  "title": "Software Engineering Intern",
+                  "company": "EduZ",
+                  "location": "Ho Chi Minh",
+                  "from": "2026-02-01T00:00:00.000Z",
+                  "current": true,
+                  "description": "Tham gia dự án Hub Xanh, phát triển hệ thống marketing với AI."
+                }
+              ],
+              "education": [
+                {
+                  "_id": "651a1e5f60718293a4b5c6d7",
+                  "school": "Ho Chi Minh City University of Technology and Education",
+                  "degree": "Bachelor",
+                  "fieldofstudy": "Information Technology",
+                  "from": "2022-09-01T00:00:00.000Z",
+                  "current": true,
+                  "description": "Học tập và nghiên cứu các công nghệ phần mềm."
+                }
+              ],
+              "social": {
+                "facebook": "https://facebook.com/eduz36"
+              },
+              "date": "2024-01-01T00:00:00.000Z",
+              "classCode": "20110EUDZ36",
+              "faculty": "Khoa Công Nghệ Thông Tin",
+              "postCount": 2,
+              "skillsCount": 6,
+              "experienceCount": 1
+            },
+            {
+              "_id": "651a4b1c2d3e4f5061728390",
+              "user": {
+                "_id": "651a3a1b2c3d4e5f60718290",
+                "name": "Lê Ngô Nhựt Tân",
+                "avatar": "//www.gravatar.com/avatar/00000000000000000000000000000001?s=200&r=pg&d=mm"
+              },
+              "company": "EDUZ company 36",
+              "website": "",
+              "location": "TP.HCM",
+              "status": "Sinh viên",
+              "skills": [
+                "NodeJS",
+                "React",
+                "MongoDB",
+                "SQL"
+              ],
+              "bio": "Toi minh mẫn ",
+              "githubusername": "Okarin",
+              "experience": [],
+              "education": [
+                {
+                  "_id": "651a5c1d2e3f405162738490",
+                  "school": "Ho Chi Minh City University of Technology and Education",
+                  "degree": "Bachelor",
+                  "fieldofstudy": "Information Technology",
+                  "from": "2022-09-01T00:00:00.000Z",
+                  "current": true,
+                  "description": "Nghiên cứu và thực hành xây dựng các ứng dụng phần mềm."
+                }
+              ],
+              "social": {
+                "facebook": "https://facebook.com/eduz36"
+              },
+              "date": "2024-02-01T10:00:00.000Z",
+              "classCode": "20110EUDZ",
+              "faculty": "Khoa Công Nghệ Thông Tin",
+              "postCount": 1,
+              "skillsCount": 4,
+              "experienceCount": 0
+            },
+            {
+              "_id": "651a4b1c2d3e4f5061728392",
+              "user": {
+                "_id": "651a3a1b2c3d4e5f60718292",
+                "name": "Nguyễn Quốc Khánh",
+                "avatar": "//www.gravatar.com/avatar/00000000000000000000000000000003?s=200&r=pg&d=mm"
+              },
+              "company": "AudioGear E-Commerce Project",
+              "website": "",
+              "location": "Ho Chi Minh City",
+              "status": "Developer",
+              "skills": [
+                "Java",
+                "Kotlin",
+                "Spring Boot",
+                "SQL"
+              ],
+              "bio": "Chuyên về thiết kế hệ thống và phát triển các ứng dụng thương mại điện tử.",
+              "githubusername": "khanhnguyen",
+              "experience": [],
+              "education": [
+                {
+                  "_id": "651a5c1d2e3f405162738492",
+                  "school": "Ho Chi Minh City University of Technology and Education",
+                  "degree": "Bachelor",
+                  "fieldofstudy": "Information Technology",
+                  "from": "2022-09-01T00:00:00.000Z",
+                  "current": true,
+                  "description": "Học về phát triển nền tảng phần mềm."
+                }
+              ],
+              "social": {},
+              "date": "2024-02-03T10:00:00.000Z",
+              "postCount": 1,
+              "skillsCount": 4,
+              "experienceCount": 0
+            },
+            {
+              "_id": "6a003eff00e9feb9e2373a11",
+              "user": {},
+              "faculty": "Khoa Công Nghệ Thông Tin",
+              "classCode": "20110UTE",
+              "company": "VNG Corporation",
+              "website": "https://myportfolio.com",
+              "location": "Thủ Đức, TP.HCM",
+              "status": "Senior Developer",
+              "skills": [
+                "ReactJS",
+                "NodeJS",
+                "Express",
+                "MongoDB",
+                "TypeScript"
+              ],
+              "bio": "Mình là cựu sinh viên UTE đam mê lập trình Web Backend.",
+              "githubusername": "ute-dev-2026",
+              "social": {
+                "youtube": "https://youtube.com/c/utedev",
+                "twitter": "https://twitter.com/utedev",
+                "facebook": "https://facebook.com/utedev",
+                "linkedin": "https://linkedin.com/in/utedev",
+                "instagram": "https://instagram.com/utedev"
+              },
+              "experience": [],
+              "education": [],
+              "date": "2026-05-10T08:17:03.190Z",
+              "postCount": 0,
+              "skillsCount": 5,
+              "experienceCount": 0
+            },
+            {
+              "_id": "651a4b1c2d3e4f5061728391",
+              "user": {
+                "_id": "651a3a1b2c3d4e5f60718291",
+                "name": "Tài",
+                "avatar": "//www.gravatar.com/avatar/00000000000000000000000000000002?s=200&r=pg&d=mm"
+              },
+              "company": "Tech Startup",
+              "website": "",
+              "location": "Ho Chi Minh City",
+              "status": "Junior Developer",
+              "skills": [
+                "Python",
+                "Django",
+                "SQL"
+              ],
+              "bio": "Lập trình viên chuyên tối ưu hóa hệ thống backend và cơ sở dữ liệu.",
+              "githubusername": "taidev",
+              "experience": [
+                {
+                  "_id": "651a5c1d2e3f405162738491",
+                  "title": "Backend Developer",
+                  "company": "Tech Startup",
+                  "location": "HCM",
+                  "from": "2023-05-01T00:00:00.000Z",
+                  "current": true,
+                  "description": "Xây dựng và bảo trì hệ thống RESTful API."
+                }
+              ],
+              "education": [],
+              "social": {},
+              "date": "2024-02-02T10:00:00.000Z",
+              "postCount": 0,
+              "skillsCount": 3,
+              "experienceCount": 1
+            }
+          ]

@@ -1,0 +1,217 @@
+info:
+  name: Get Top Trending Posts
+  type: http
+  seq: 6
+
+http:
+  method: GET
+  url: http://localhost:5000/api/posts/top-trending
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Get Top Trending Posts - 200
+    request:
+      url: http://localhost:5000/api/posts/top-trending
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: x-powered-by
+          value: Express
+        - name: content-type
+          value: application/json; charset=utf-8
+        - name: content-length
+          value: "4456"
+        - name: etag
+          value: W/"1168-kSwIml/vwd+1mGVNuOdqZ91z4iA"
+        - name: date
+          value: Tue, 19 May 2026 07:01:13 GMT
+        - name: connection
+          value: keep-alive
+        - name: keep-alive
+          value: timeout=5
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "data": [
+              {
+                "_id": "6a0a42454efb51b81d49a41e",
+                "user": "6a0097ab779909396484a6cc",
+                "text": "Nội dung bài đăng thử nghiệm qua Bruno taitest",
+                "tags": [],
+                "name": "Huynh Ngoc Tai",
+                "avatar": "",
+                "likes": [
+                  {
+                    "user": "6a0097ab779909396484a6cc",
+                    "_id": "6a0a5cec10ee4a8f21ce33bb"
+                  }
+                ],
+                "comments": [
+                  {
+                    "user": "6a0097ab779909396484a6cc",
+                    "text": "hi",
+                    "name": "Huynh Ngoc Tai",
+                    "avatar": "",
+                    "_id": "6a0a5cef10ee4a8f21ce33bf",
+                    "date": "2026-05-18T00:27:27.761Z"
+                  },
+                  {
+                    "user": "6a0097ab779909396484a6cc",
+                    "text": "Xin chào mọi người",
+                    "name": "Huynh Ngoc Tai",
+                    "avatar": "",
+                    "_id": "6a0a45114efb51b81d49a42b",
+                    "date": "2026-05-17T22:45:37.108Z"
+                  },
+                  {
+                    "user": "6a0097ab779909396484a6cc",
+                    "text": "Đây là bình luận test từ Bruno",
+                    "name": "Huynh Ngoc Tai",
+                    "avatar": "",
+                    "_id": "6a0a43fe4efb51b81d49a425",
+                    "date": "2026-05-17T22:41:02.251Z"
+                  }
+                ],
+                "date": "2026-05-17T22:33:41.543Z",
+                "__v": 14,
+                "likesCount": 1,
+                "commentsCount": 3
+              },
+              {
+                "_id": "651a6d1e2f30415263748591",
+                "user": "651a3a1b2c3d4e5f60718292",
+                "text": "Mọi người thường dùng công cụ nào để vẽ Entity-Relationship Diagrams (ERD) và script SQL cho dự án thương mại điện tử? Mình đang làm trang web AudioGear.",
+                "name": "Nguyễn Quốc Khánh",
+                "avatar": "//www.gravatar.com/avatar/00000000000000000000000000000003?s=200&r=pg&d=mm",
+                "likes": [
+                  {
+                    "user": "6a0097ab779909396484a6cc",
+                    "_id": "6a0a3ae24efb51b81d49a3fe"
+                  }
+                ],
+                "comments": [
+                  {
+                    "user": "6a0097ab779909396484a6cc",
+                    "text": "Xin chào",
+                    "name": "Huynh Ngoc Tai",
+                    "avatar": "",
+                    "_id": "6a0a3aec4efb51b81d49a401",
+                    "date": "2026-05-17T22:02:20.036Z"
+                  },
+                  {
+                    "_id": "651a7e1f2031425364758692",
+                    "user": "651a3a1b2c3d4e5f60718290",
+                    "text": "Draw.io hoặc dbdiagram.io nha. Mình hay xài dbdiagram vì chỉ cần gõ code là nó tự generate ra hình minh họa luôn, khá tiện lợi cho mấy website thương mại điện tử.",
+                    "name": "Lê Ngô Nhựt Tân",
+                    "avatar": "//www.gravatar.com/avatar/00000000000000000000000000000001?s=200&r=pg&d=mm",
+                    "date": "2024-02-06T09:00:00.000Z"
+                  }
+                ],
+                "date": "2024-02-05T09:00:00.000Z",
+                "__v": 2,
+                "tags": [],
+                "likesCount": 1,
+                "commentsCount": 2
+              },
+              {
+                "_id": "6a0a3f1d4efb51b81d49a40e",
+                "user": "6a0097ab779909396484a6cc",
+                "text": "Nội dung bài đăng thử nghiệm qua Bruno taitest",
+                "tags": [],
+                "name": "Huynh Ngoc Tai",
+                "avatar": "",
+                "likes": [
+                  {
+                    "user": "6a0097ab779909396484a6cc",
+                    "_id": "6a0a41f64efb51b81d49a41b"
+                  }
+                ],
+                "comments": [
+                  {
+                    "user": "6a0097ab779909396484a6cc",
+                    "text": "Cảm ơn bạn",
+                    "name": "Huynh Ngoc Tai",
+                    "avatar": "",
+                    "_id": "6a0a41fd4efb51b81d49a41d",
+                    "date": "2026-05-17T22:32:29.694Z"
+                  }
+                ],
+                "date": "2026-05-17T22:20:13.519Z",
+                "__v": 2,
+                "likesCount": 1,
+                "commentsCount": 1
+              },
+              {
+                "_id": "651a6d1e2f30415263748590",
+                "user": "651a3a1b2c3d4e5f60718290",
+                "text": "Có ai có kinh nghiệm deploy ứng dụng MERN stack lên nền tảng đám mây của Render không? Mình đang cần cấu hình biến môi trường cho phần backend.",
+                "name": "Lê Ngô Nhựt Tân",
+                "avatar": "//www.gravatar.com/avatar/00000000000000000000000000000001?s=200&r=pg&d=mm",
+                "likes": [
+                  {
+                    "_id": "651a7e1f2031425364758690",
+                    "user": "651a3a1b2c3d4e5f60718292"
+                  }
+                ],
+                "comments": [
+                  {
+                    "_id": "651a7e1f2031425364758691",
+                    "user": "651a3a1b2c3d4e5f60718291",
+                    "text": "Bạn thử check phần Environment trong dashboard của Render xem, add từng cặp key-value vào là được.",
+                    "name": "Tài",
+                    "avatar": "//www.gravatar.com/avatar/00000000000000000000000000000002?s=200&r=pg&d=mm",
+                    "date": "2024-02-05T08:00:00.000Z"
+                  }
+                ],
+                "date": "2024-02-04T08:00:00.000Z",
+                "__v": 0,
+                "likesCount": 1,
+                "commentsCount": 1
+              },
+              {
+                "_id": "651a1f60718293a4b5c6d7e8",
+                "user": "651a1b2c3d4e5f60718293a4",
+                "text": "Mọi người có ai đang dùng Arch Linux không? Mình đang gặp một chút vấn đề với kernel configuration trên CachyOS.",
+                "name": "Trí Hiệu Võ",
+                "avatar": "//www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200&r=pg&d=mm",
+                "likes": [],
+                "comments": [
+                  {
+                    "_id": "651a2a718293a4b5c6d7e8f9",
+                    "user": "651a1b2c3d4e5f60718293a4",
+                    "text": "À mình sửa được rồi nhé, format lại phân vùng sang Ext4 là chạy ngon lành.",
+                    "name": "Trí Hiệu Võ",
+                    "avatar": "//www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200&r=pg&d=mm",
+                    "date": "2024-01-02T00:00:00.000Z"
+                  }
+                ],
+                "date": "2024-01-01T10:00:00.000Z",
+                "__v": 0,
+                "likesCount": 0,
+                "commentsCount": 1
+              },
+              {
+                "_id": "6a09c2fd9037a6492e794066",
+                "user": "651a1b2c3d4e5f60718293a4",
+                "text": "demo123",
+                "tags": [],
+                "name": "Trí Hiệu Võ",
+                "avatar": "//www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200&r=pg&d=mm",
+                "likes": [],
+                "comments": [],
+                "date": "2026-05-17T13:30:37.986Z",
+                "__v": 0,
+                "likesCount": 0,
+                "commentsCount": 0
+              }
+            ]
+          }
