@@ -1,0 +1,16 @@
+info:
+  name: Create or Get Conversation
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: http://localhost:5000/api/chat/:userId
+  body:
+    type: none
+  auth:
+    type: bearer
+    token: '{{token}}'
+
+settings:
+  encodeUrl: true
