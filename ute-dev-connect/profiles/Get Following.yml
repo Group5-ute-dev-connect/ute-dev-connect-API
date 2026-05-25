@@ -1,0 +1,17 @@
+info:
+  name: Get Following
+  type: http
+  seq: 9
+
+http:
+  method: GET
+  url: http://localhost:5000/api/profile/following/651a1b2c3d4e5f60718293a4
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

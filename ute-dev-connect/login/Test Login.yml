@@ -15,6 +15,16 @@ http:
       }
   auth: inherit
 
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        const body = res.getBody();
+        if (body && body.token) {
+          bru.setVar("token", body.token);
+          console.log("Token saved to collection variables!");
+        }
+
 settings:
   encodeUrl: true
   timeout: 0

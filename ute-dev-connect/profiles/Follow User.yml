@@ -1,0 +1,16 @@
+info:
+  name: Follow User
+  type: http
+  seq: 6
+
+http:
+  method: PUT
+  url: http://localhost:5000/api/profile/follow/USER_ID_GOES_HERE
+  body:
+    type: none
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true

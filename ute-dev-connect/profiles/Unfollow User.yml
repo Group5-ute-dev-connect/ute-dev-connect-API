@@ -1,0 +1,16 @@
+info:
+  name: Unfollow User
+  type: http
+  seq: 7
+
+http:
+  method: PUT
+  url: http://localhost:5000/api/profile/unfollow/USER_ID_GOES_HERE
+  body:
+    type: none
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
