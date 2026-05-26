@@ -1,0 +1,21 @@
+info:
+  name: Mark As Read
+  type: http
+  seq: 3
+
+http:
+  method: PUT
+  url: http://localhost:5000/api/notifications/:id/read
+  auth:
+    type: bearer
+    token: '{{token}}'
+
+params:
+  - name: id
+    value: ''
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

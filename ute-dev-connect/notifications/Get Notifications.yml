@@ -1,0 +1,20 @@
+info:
+  name: Get Notifications
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: http://localhost:5000/api/notifications
+  body:
+    type: text
+    data: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWExYjJjM2Q0ZTVmNjA3MTgyOTNhNCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzc5ODAxNjY1LCJleHAiOjE3Nzk4MDUyNjV9.FiLikYne7I3IEuyqL7g7qdwWklzxnKmbrdECwdCPFRo
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWExYjJjM2Q0ZTVmNjA3MTgyOTNhNCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzc5ODAxNjY1LCJleHAiOjE3Nzk4MDUyNjV9.FiLikYne7I3IEuyqL7g7qdwWklzxnKmbrdECwdCPFRo
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
