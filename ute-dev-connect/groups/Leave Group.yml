@@ -1,0 +1,62 @@
+info:
+  name: Leave Group
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: http://localhost:5000/api/groups/6a23b381e7e9becfb30e9c37/leave
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Leave Group - 200
+    request:
+      url: http://localhost:5000/api/groups/6b1234567890abcdef123456/leave
+      method: PUT
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "message": "Rời nhóm thành công",
+            "membersCount": 1
+          }
+  - name: Leave Group - 400 (Admin không thể rời khi có thành viên khác)
+    request:
+      url: http://localhost:5000/api/groups/6b1234567890abcdef123456/leave
+      method: PUT
+    response:
+      status: 400
+      statusText: Bad Request
+      body:
+        type: json
+        data: |-
+          {
+            "success": false,
+            "message": "Admin không thể rời nhóm khi còn thành viên khác. Hãy xóa nhóm hoặc chuyển quyền admin."
+          }
+  - name: Leave Group - 400 (Không phải thành viên)
+    request:
+      url: http://localhost:5000/api/groups/6b1234567890abcdef123456/leave
+      method: PUT
+    response:
+      status: 400
+      statusText: Bad Request
+      body:
+        type: json
+        data: |-
+          {
+            "success": false,
+            "message": "Bạn không phải thành viên của nhóm này"
+          }

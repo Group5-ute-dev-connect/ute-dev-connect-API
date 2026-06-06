@@ -1,0 +1,71 @@
+info:
+  name: Search Posts (Full-text)
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: http://localhost:5000/api/search?type=posts&q=react
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Search Posts - 200 (Full-text)
+    request:
+      url: http://localhost:5000/api/search?type=posts&q=react&page=1&limit=10
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "type": "posts",
+            "keyword": "react",
+            "tag": "",
+            "data": [
+              {
+                "_id": "651a6d1e2f30415263748591",
+                "user": "651a3a1b2c3d4e5f60718292",
+                "text": "Mọi người thường dùng thư viện state management nào cho React? Redux Toolkit hay Zustand?",
+                "tags": ["react", "redux"],
+                "group": null,
+                "name": "Nguyễn Quốc Khánh",
+                "avatar": "//www.gravatar.com/avatar/00000000000000000000000000000003",
+                "likes": [],
+                "comments": [],
+                "date": "2026-06-01T09:00:00.000Z"
+              }
+            ],
+            "total": 3,
+            "hasMore": false,
+            "page": 1,
+            "limit": 10
+          }
+  - name: Search Posts - 200 (Không tìm thấy kết quả)
+    request:
+      url: http://localhost:5000/api/search?type=posts&q=assemblyxyznotfound
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "type": "posts",
+            "keyword": "assemblyxyznotfound",
+            "tag": "",
+            "data": [],
+            "total": 0,
+            "hasMore": false,
+            "page": 1,
+            "limit": 10
+          }

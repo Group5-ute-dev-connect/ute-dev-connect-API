@@ -1,0 +1,91 @@
+info:
+  name: Get All Groups
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: http://localhost:5000/api/groups?page=1&limit=10
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Get All Groups - 200
+    request:
+      url: http://localhost:5000/api/groups?page=1&limit=10
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: content-type
+          value: application/json; charset=utf-8
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "data": [
+              {
+                "_id": "6b1234567890abcdef123456",
+                "name": "Nhóm React & Frontend",
+                "description": "Nhóm học tập về React, Next.js và các công nghệ frontend hiện đại",
+                "avatar": "",
+                "admin": {
+                  "_id": "6a0097ab779909396484a6cc",
+                  "name": "Huynh Ngoc Tai",
+                  "avatar": ""
+                },
+                "members": [
+                  {
+                    "user": "6a0097ab779909396484a6cc",
+                    "joinedAt": "2026-06-06T02:44:00.000Z",
+                    "_id": "6b1234567890abcdef123457"
+                  }
+                ],
+                "tags": ["react", "nextjs", "frontend"],
+                "isActive": true,
+                "date": "2026-06-06T02:44:00.000Z"
+              }
+            ],
+            "total": 1,
+            "hasMore": false,
+            "page": 1,
+            "limit": 10
+          }
+  - name: Get All Groups - 200 (Tìm kiếm theo tên)
+    request:
+      url: http://localhost:5000/api/groups?q=react&page=1&limit=10
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "data": [
+              {
+                "_id": "6b1234567890abcdef123456",
+                "name": "Nhóm React & Frontend",
+                "description": "Nhóm học tập về React, Next.js",
+                "admin": {
+                  "_id": "6a0097ab779909396484a6cc",
+                  "name": "Huynh Ngoc Tai",
+                  "avatar": ""
+                },
+                "tags": ["react", "nextjs"],
+                "isActive": true,
+                "date": "2026-06-06T02:44:00.000Z"
+              }
+            ],
+            "total": 1,
+            "hasMore": false,
+            "page": 1,
+            "limit": 10
+          }

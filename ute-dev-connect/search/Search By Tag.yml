@@ -1,0 +1,84 @@
+info:
+  name: Search By Tag
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: http://localhost:5000/api/search?type=posts&tag=nodejs
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Search By Tag - 200 (tag=nodejs)
+    request:
+      url: http://localhost:5000/api/search?type=posts&tag=nodejs&page=1&limit=10
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "type": "posts",
+            "keyword": "",
+            "tag": "nodejs",
+            "data": [
+              {
+                "_id": "651a8f2c3041526374859102",
+                "user": "651a3a1b2c3d4e5f60718290",
+                "text": "Các bạn dùng framework nào cho backend Node.js? Express, Fastify hay NestJS?",
+                "tags": ["nodejs", "backend", "express"],
+                "group": null,
+                "name": "Lê Ngô Nhựt Tân",
+                "avatar": "//www.gravatar.com/avatar/00000000000000000000000000000001",
+                "likes": [],
+                "comments": [],
+                "date": "2026-05-20T10:00:00.000Z"
+              }
+            ],
+            "total": 2,
+            "hasMore": false,
+            "page": 1,
+            "limit": 10
+          }
+  - name: Search By Tag + Keyword - 200 (kết hợp)
+    request:
+      url: http://localhost:5000/api/search?type=posts&tag=react&q=hooks&page=1&limit=10
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "type": "posts",
+            "keyword": "hooks",
+            "tag": "react",
+            "data": [
+              {
+                "_id": "651a9f2c3041526374859103",
+                "user": "651a3a1b2c3d4e5f60718291",
+                "text": "useCallback và useMemo hooks trong React - khi nào nên dùng?",
+                "tags": ["react", "hooks", "performance"],
+                "group": null,
+                "name": "Trần Thị Bình",
+                "avatar": "",
+                "likes": [],
+                "comments": [],
+                "date": "2026-05-22T08:00:00.000Z"
+              }
+            ],
+            "total": 1,
+            "hasMore": false,
+            "page": 1,
+            "limit": 10
+          }

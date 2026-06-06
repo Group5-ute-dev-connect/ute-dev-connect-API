@@ -1,0 +1,48 @@
+info:
+  name: Join Group
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: http://localhost:5000/api/groups/6a23b381e7e9becfb30e9c37/join
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Join Group - 200
+    request:
+      url: http://localhost:5000/api/groups/6b1234567890abcdef123456/join
+      method: PUT
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "message": "Tham gia nhóm thành công",
+            "membersCount": 2
+          }
+  - name: Join Group - 400 (Đã là thành viên)
+    request:
+      url: http://localhost:5000/api/groups/6b1234567890abcdef123456/join
+      method: PUT
+    response:
+      status: 400
+      statusText: Bad Request
+      body:
+        type: json
+        data: |-
+          {
+            "success": false,
+            "message": "Bạn đã là thành viên của nhóm này"
+          }

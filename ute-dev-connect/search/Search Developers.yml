@@ -1,0 +1,105 @@
+info:
+  name: Search Developers
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: http://localhost:5000/api/search?type=developers&q=nguyen&skill=react
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Search Developers - 200 (Theo tên + skill)
+    request:
+      url: http://localhost:5000/api/search?type=developers&q=nguyen&skill=react&page=1&limit=10
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "type": "developers",
+            "keyword": "nguyen",
+            "skill": "react",
+            "data": [
+              {
+                "_id": "651a3c1b2c3d4e5f60718294",
+                "user": {
+                  "_id": "651a3a1b2c3d4e5f60718292",
+                  "name": "Nguyễn Quốc Khánh",
+                  "avatar": "//www.gravatar.com/avatar/00000000000000000000000000000003",
+                  "email": "khanh@student.hcmute.edu.vn"
+                },
+                "faculty": "Khoa Công nghệ thông tin",
+                "classCode": "21DTHC2",
+                "status": "Sinh viên",
+                "skills": ["React", "Node.js", "MongoDB", "Python"],
+                "bio": "Sinh viên năm 3 yêu thích lập trình web",
+                "githubusername": "khanhdev",
+                "date": "2026-01-15T00:00:00.000Z"
+              }
+            ],
+            "total": 1,
+            "hasMore": false,
+            "page": 1,
+            "limit": 10
+          }
+  - name: Search Developers - 200 (Chỉ theo skill)
+    request:
+      url: http://localhost:5000/api/search?type=developers&skill=nodejs&page=1&limit=10
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "type": "developers",
+            "keyword": "",
+            "skill": "nodejs",
+            "data": [
+              {
+                "_id": "651a3c1b2c3d4e5f60718293",
+                "user": {
+                  "_id": "651a3a1b2c3d4e5f60718290",
+                  "name": "Lê Ngô Nhựt Tân",
+                  "avatar": "//www.gravatar.com/avatar/00000000000000000000000000000001",
+                  "email": "tan@student.hcmute.edu.vn"
+                },
+                "faculty": "Khoa Công nghệ thông tin",
+                "status": "Sinh viên",
+                "skills": ["Node.js", "Express", "MongoDB", "Docker"],
+                "bio": "Backend developer, thích xây dựng REST API",
+                "githubusername": "tandev",
+                "date": "2026-01-10T00:00:00.000Z"
+              }
+            ],
+            "total": 2,
+            "hasMore": false,
+            "page": 1,
+            "limit": 10
+          }
+  - name: Search Developers - 400 (Type không hợp lệ)
+    request:
+      url: http://localhost:5000/api/search?type=invalidtype
+      method: GET
+    response:
+      status: 400
+      statusText: Bad Request
+      body:
+        type: json
+        data: |-
+          {
+            "success": false,
+            "message": "Loại tìm kiếm không hợp lệ. Dùng: posts | groups | developers"
+          }

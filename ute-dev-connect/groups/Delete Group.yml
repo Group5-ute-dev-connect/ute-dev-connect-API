@@ -1,0 +1,47 @@
+info:
+  name: Delete Group
+  type: http
+  seq: 6
+
+http:
+  method: DELETE
+  url: http://localhost:5000/api/groups/6a23b381e7e9becfb30e9c37
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Delete Group - 200 (Admin xóa nhóm)
+    request:
+      url: http://localhost:5000/api/groups/6b1234567890abcdef123456
+      method: DELETE
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "message": "Xóa nhóm thành công"
+          }
+  - name: Delete Group - 403 (Không phải admin nhóm)
+    request:
+      url: http://localhost:5000/api/groups/6b1234567890abcdef123456
+      method: DELETE
+    response:
+      status: 403
+      statusText: Forbidden
+      body:
+        type: json
+        data: |-
+          {
+            "success": false,
+            "message": "Chỉ admin nhóm mới có quyền xóa nhóm"
+          }

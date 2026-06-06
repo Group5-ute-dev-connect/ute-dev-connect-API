@@ -1,0 +1,96 @@
+info:
+  name: Create Group
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:5000/api/groups
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Nhóm React & Frontend",
+        "description": "Nhóm học tập về React, Next.js và các công nghệ frontend hiện đại",
+        "tags": ["react", "nextjs", "frontend", "javascript"]
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Create Group - 201
+    request:
+      url: http://localhost:5000/api/groups
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "name": "Nhóm React & Frontend",
+            "description": "Nhóm học tập về React, Next.js và các công nghệ frontend hiện đại",
+            "tags": ["react", "nextjs", "frontend", "javascript"]
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: content-type
+          value: application/json; charset=utf-8
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "message": "Tạo nhóm thành công",
+            "data": {
+              "_id": "6b1234567890abcdef123456",
+              "name": "Nhóm React & Frontend",
+              "description": "Nhóm học tập về React, Next.js và các công nghệ frontend hiện đại",
+              "avatar": "",
+              "admin": "6a0097ab779909396484a6cc",
+              "members": [
+                {
+                  "user": "6a0097ab779909396484a6cc",
+                  "joinedAt": "2026-06-06T02:44:00.000Z",
+                  "_id": "6b1234567890abcdef123457"
+                }
+              ],
+              "tags": ["react", "nextjs", "frontend", "javascript"],
+              "isActive": true,
+              "date": "2026-06-06T02:44:00.000Z",
+              "__v": 0
+            }
+          }
+  - name: Create Group - 400 (Thiếu tên nhóm)
+    request:
+      url: http://localhost:5000/api/groups
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "description": "Nhóm không có tên"
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      body:
+        type: json
+        data: |-
+          {
+            "success": false,
+            "message": "Lỗi dữ liệu đầu vào",
+            "errors": [
+              {
+                "msg": "Tên nhóm không được để trống",
+                "path": "name"
+              }
+            ]
+          }

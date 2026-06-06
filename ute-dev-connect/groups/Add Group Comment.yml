@@ -1,0 +1,75 @@
+info:
+  name: Add Group Comment
+  type: http
+  seq: 9
+
+http:
+  method: POST
+  url: http://localhost:5000/api/groups/GROUP_ID_GOES_HERE/posts/POST_ID_GOES_HERE/comments
+  body:
+    type: json
+    data: |-
+      {
+        "text": "Mình đang dùng TanStack Query v5, caching rất mạnh, recommend bạn xem docs nhé!"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Add Group Comment - 201
+    request:
+      url: http://localhost:5000/api/groups/6b1234567890abcdef123456/posts/6b2345678901abcdef234567/comments
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "text": "Mình đang dùng TanStack Query v5, caching rất mạnh, recommend bạn xem docs nhé!"
+          }
+    response:
+      status: 201
+      statusText: Created
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "message": "Bình luận thành công",
+            "data": [
+              {
+                "user": "6a0097ab779909396484a6cc",
+                "text": "Mình đang dùng TanStack Query v5, caching rất mạnh, recommend bạn xem docs nhé!",
+                "name": "Huynh Ngoc Tai",
+                "avatar": "",
+                "_id": "6b3456789012abcdef345678",
+                "date": "2026-06-06T03:10:00.000Z"
+              }
+            ]
+          }
+  - name: Add Group Comment - 403 (Không phải thành viên)
+    request:
+      url: http://localhost:5000/api/groups/6b1234567890abcdef123456/posts/6b2345678901abcdef234567/comments
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "text": "Bình luận không hợp lệ"
+          }
+    response:
+      status: 403
+      statusText: Forbidden
+      body:
+        type: json
+        data: |-
+          {
+            "success": false,
+            "message": "Bạn cần là thành viên của nhóm để thực hiện hành động này"
+          }

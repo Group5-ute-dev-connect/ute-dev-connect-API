@@ -1,0 +1,78 @@
+info:
+  name: Create Group Post
+  type: http
+  seq: 8
+
+http:
+  method: POST
+  url: http://localhost:5000/api/groups/6a23b462e7e9becfb30e9c41/posts
+  body:
+    type: json
+    data: |-
+      {
+        "text": "Mọi người có ai dùng React Query chưa? Mình đang tìm hiểu về caching strategy với #react #reactquery"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Create Group Post - 201
+    request:
+      url: http://localhost:5000/api/groups/6b1234567890abcdef123456/posts
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "text": "Mọi người có ai dùng React Query chưa? Mình đang tìm hiểu về caching strategy với #react #reactquery"
+          }
+    response:
+      status: 201
+      statusText: Created
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "message": "Đăng bài trong nhóm thành công",
+            "data": {
+              "_id": "6b2345678901abcdef234567",
+              "user": "6a0097ab779909396484a6cc",
+              "text": "Mọi người có ai dùng React Query chưa? Mình đang tìm hiểu về caching strategy với #react #reactquery",
+              "tags": [],
+              "group": "6b1234567890abcdef123456",
+              "name": "Huynh Ngoc Tai",
+              "avatar": "",
+              "likes": [],
+              "comments": [],
+              "date": "2026-06-06T03:00:00.000Z",
+              "__v": 0
+            }
+          }
+  - name: Create Group Post - 403 (Không phải thành viên)
+    request:
+      url: http://localhost:5000/api/groups/6b1234567890abcdef123456/posts
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "text": "Tôi muốn đăng bài nhưng không phải thành viên"
+          }
+    response:
+      status: 403
+      statusText: Forbidden
+      body:
+        type: json
+        data: |-
+          {
+            "success": false,
+            "message": "Bạn cần là thành viên của nhóm để thực hiện hành động này"
+          }

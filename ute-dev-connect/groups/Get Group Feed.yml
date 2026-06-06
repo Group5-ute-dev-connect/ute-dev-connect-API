@@ -1,0 +1,86 @@
+info:
+  name: Get Group Feed
+  type: http
+  seq: 7
+
+http:
+  method: GET
+  url: http://localhost:5000/api/groups/6a23b462e7e9becfb30e9c41/feed?page=1&limit=10
+  params:
+    - name: page
+      value: "1"
+      type: query
+    - name: limit
+      value: "10"
+      type: query
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Get Group Feed - 200 (Thành viên truy cập)
+    request:
+      url: http://localhost:5000/api/groups/6b1234567890abcdef123456/feed?page=1&limit=10
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "data": [
+              {
+                "_id": "6b2345678901abcdef234567",
+                "user": "6a0097ab779909396484a6cc",
+                "text": "Mọi người có ai dùng React Query chưa? Mình đang tìm hiểu về caching strategy",
+                "tags": ["react", "reactquery"],
+                "group": "6b1234567890abcdef123456",
+                "name": "Huynh Ngoc Tai",
+                "avatar": "",
+                "likes": [],
+                "comments": [],
+                "date": "2026-06-06T03:00:00.000Z",
+                "__v": 0
+              }
+            ],
+            "total": 1,
+            "hasMore": false,
+            "page": 1,
+            "limit": 10
+          }
+  - name: Get Group Feed - 403 (Không phải thành viên)
+    request:
+      url: http://localhost:5000/api/groups/6b1234567890abcdef123456/feed?page=1&limit=10
+      method: GET
+    response:
+      status: 403
+      statusText: Forbidden
+      body:
+        type: json
+        data: |-
+          {
+            "success": false,
+            "message": "Bạn cần là thành viên của nhóm để thực hiện hành động này"
+          }
+  - name: Get Group Feed - 401 (Chưa đăng nhập)
+    request:
+      url: http://localhost:5000/api/groups/6b1234567890abcdef123456/feed
+      method: GET
+    response:
+      status: 401
+      statusText: Unauthorized
+      body:
+        type: json
+        data: |-
+          {
+            "success": false,
+            "message": "Không có token, từ chối truy cập"
+          }
