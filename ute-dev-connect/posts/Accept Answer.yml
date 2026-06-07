@@ -1,0 +1,19 @@
+info:
+  name: Accept Answer
+  type: http
+  seq: 10
+
+http:
+  method: PUT
+  url: http://localhost:5000/api/posts/accept/REPLACE_POST_ID/REPLACE_COMMENT_ID
+  body:
+    type: none
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMDA5N2FiNzc5OTA5Mzk2NDg0YTZjYyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzc5NjI3OTI4LCJleHAiOjE3Nzk2MzE1Mjh9.PxCjVUkNiPcgQGVUcBl7qVD21uvWCzf3ZuiwNUKAlEo
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
