@@ -21,8 +21,11 @@ runtime:
   scripts:
     - type: after-response
       code: |-
-        var jsonData = res.getBody();
-        pm.collectionVariables.set("token", jsonData.token);
+        const body = res.getBody();
+        if (body && body.token) {
+          bru.setVar("token", body.token);
+          console.log("Token saved to collection variables!");
+        }
 
 settings:
   encodeUrl: true
