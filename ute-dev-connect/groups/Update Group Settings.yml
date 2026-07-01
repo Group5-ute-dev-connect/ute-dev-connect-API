@@ -1,0 +1,27 @@
+info:
+  name: Update Group Settings
+  type: http
+  seq: 21
+
+http:
+  method: PUT
+  url: http://localhost:5000/api/groups/6a12f298e69915b822f93509/settings
+  headers:
+    - name: Content-Type
+      value: application/json
+  auth:
+    type: bearer
+    token: "{{token}}"
+  body:
+    type: json
+    data: |-
+      {
+        "isPrivate": true,
+        "requirePostApproval": true
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

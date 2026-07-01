@@ -1,0 +1,26 @@
+info:
+  name: Add Group Filter
+  type: http
+  seq: 18
+
+http:
+  method: POST
+  url: http://localhost:5000/api/groups/6a12f298e69915b822f93509/filters
+  headers:
+    - name: Content-Type
+      value: application/json
+  auth:
+    type: bearer
+    token: "{{token}}"
+  body:
+    type: json
+    data: |-
+      {
+        "word": "copycat"
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

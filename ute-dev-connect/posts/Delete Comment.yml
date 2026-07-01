@@ -1,0 +1,17 @@
+info:
+  name: Delete Comment
+  type: http
+  seq: 17
+
+http:
+  method: DELETE
+  url: http://localhost:5000/api/posts/comment/6a12f298e69915b822f93508/7b23e309f70026c933fa4619
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

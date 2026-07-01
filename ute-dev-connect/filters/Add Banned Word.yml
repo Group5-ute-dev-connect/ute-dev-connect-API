@@ -1,0 +1,26 @@
+info:
+  name: Add Banned Word
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: http://localhost:5000/api/filters/words
+  headers:
+    - name: Content-Type
+      value: application/json
+  auth:
+    type: bearer
+    token: "{{token}}"
+  body:
+    type: json
+    data: |-
+      {
+        "word": "toxicword"
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

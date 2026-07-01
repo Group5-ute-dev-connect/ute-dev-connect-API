@@ -1,0 +1,17 @@
+info:
+  name: Reset AI Prompt
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: http://localhost:5000/api/filters/ai-prompt/reset
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

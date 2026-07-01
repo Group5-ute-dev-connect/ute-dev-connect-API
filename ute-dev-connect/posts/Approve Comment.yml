@@ -1,0 +1,17 @@
+info:
+  name: Approve Comment
+  type: http
+  seq: 14
+
+http:
+  method: PUT
+  url: http://localhost:5000/api/posts/comment/6a12f298e69915b822f93508/7b23e309f70026c933fa4619/approve
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,17 @@
+info:
+  name: Delete Post
+  type: http
+  seq: 20
+
+http:
+  method: DELETE
+  url: http://localhost:5000/api/posts/6a12f298e69915b822f93508
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

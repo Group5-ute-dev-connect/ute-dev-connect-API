@@ -1,0 +1,17 @@
+info:
+  name: Kick Member
+  type: http
+  seq: 20
+
+http:
+  method: DELETE
+  url: http://localhost:5000/api/groups/6a12f298e69915b822f93509/members/651a3a1b2c3d4e5f60718290
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

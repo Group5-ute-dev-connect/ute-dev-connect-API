@@ -1,0 +1,23 @@
+info:
+  name: Resend Register OTP
+  type: http
+  seq: 8
+
+http:
+  method: POST
+  url: http://localhost:5000/api/auth/resend-register-otp
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "email": "teststudent@student.hcmute.edu.vn"
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

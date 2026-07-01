@@ -1,0 +1,17 @@
+info:
+  name: Get Hidden Posts
+  type: http
+  seq: 12
+
+http:
+  method: GET
+  url: http://localhost:5000/api/posts/hidden
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

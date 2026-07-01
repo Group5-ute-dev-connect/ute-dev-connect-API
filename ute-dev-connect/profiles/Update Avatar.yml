@@ -1,0 +1,24 @@
+info:
+  name: Update Avatar
+  type: http
+  seq: 10
+
+http:
+  method: PUT
+  url: http://localhost:5000/api/profile/avatar
+  headers: []
+  body:
+    type: multipartForm
+    data:
+      - name: avatar
+        value: ""
+        type: file
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

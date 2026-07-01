@@ -1,0 +1,26 @@
+info:
+  name: Transfer Admin
+  type: http
+  seq: 13
+
+http:
+  method: PUT
+  url: http://localhost:5000/api/groups/6a12f298e69915b822f93509/transfer-admin
+  headers:
+    - name: Content-Type
+      value: application/json
+  auth:
+    type: bearer
+    token: "{{token}}"
+  body:
+    type: json
+    data: |-
+      {
+        "newAdminId": "651a3a1b2c3d4e5f60718290"
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

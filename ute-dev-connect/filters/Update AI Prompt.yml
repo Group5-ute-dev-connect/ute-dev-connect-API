@@ -1,0 +1,26 @@
+info:
+  name: Update AI Prompt
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: http://localhost:5000/api/filters/ai-prompt
+  headers:
+    - name: Content-Type
+      value: application/json
+  auth:
+    type: bearer
+    token: "{{token}}"
+  body:
+    type: json
+    data: |-
+      {
+        "aiPrompt": "You are a content moderation system. Scan text for spam, betting, gambling, or toxicity."
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
